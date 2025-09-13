@@ -1,6 +1,7 @@
 import { populateContractRouterPaths } from '@orpc/nest';
-import { oc } from '@orpc/contract';
+import { oc, type } from '@orpc/contract';
 import * as z from 'zod';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 export const PlanetSchema = z.object({
   id: z.coerce.number().int().min(1),
@@ -19,7 +20,17 @@ export const listPlanetContract = oc
       cursor: z.number().int().min(0).default(0),
     })
   )
-  .output(z.array(PlanetSchema));
+  .output(
+    type<
+      Prisma.PlanetGetPayload<{
+        select: {
+          id: true;
+          name: true;
+          description: true;
+        };
+      }>[]
+    >()
+  );
 
 export const findPlanetContract = oc
   .route({

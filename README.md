@@ -126,3 +126,14 @@ https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/
 node 22
 npm install
 npm run dev
+
+## What is this?
+
+Its a end to end typesafe backend and frontend.
+Types are shared via the contracts package.
+
+This implementation uses ORPC to implement the typesafety.
+
+https://orpc.unnoq.com/
+
+You want some typesafety for nested returns, but validate params? well, you can just use prisma types as arbitrary types in the contract. Problemo solved
