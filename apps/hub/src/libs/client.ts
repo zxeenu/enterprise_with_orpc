@@ -3,6 +3,7 @@ import type { ContractRouterClient } from '@orpc/contract';
 import { createORPCClient } from '@orpc/client';
 import { OpenAPILink } from '@orpc/openapi-client/fetch';
 import { contract } from '@enterprise/contracts';
+import { createTanstackQueryUtils } from '@orpc/tanstack-query';
 
 const link = new OpenAPILink(contract, {
   url: 'http://localhost:3000/api',
@@ -15,3 +16,5 @@ const link = new OpenAPILink(contract, {
 
 export const client: JsonifiedClient<ContractRouterClient<typeof contract>> =
   createORPCClient(link);
+
+export const orpc = createTanstackQueryUtils(client);

@@ -1,16 +1,24 @@
 import { useEffect } from 'react';
-import { client } from '../libs/client';
+import { client, orpc } from '../libs/client';
 import NxWelcome from './nx-welcome';
 
 import { Route, Routes, Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 export function App() {
-  const test = async () => {
-    const data = await client.planet.find({
-      id: 1,
-    });
+  const getOneQuery = useQuery(
+    orpc.planet.find.queryOptions({
+      input: {
+        id: 1,
+      },
+    })
+  );
 
-    console.log(data);
+  const test = async () => {
+    // const data = await client.planet.find({
+    //   id: 1,
+    // });
+    // console.log(data);
   };
 
   useEffect(() => {
@@ -19,8 +27,11 @@ export function App() {
 
   return (
     <div>
+      <pre>
+        {getOneQuery.status === 'success' &&
+          JSON.stringify(getOneQuery.data, null, 2)}
+      </pre>
       <NxWelcome title="@enterprise/hub" />
-
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
       {/* Feel free to move and update them to fit your needs */}
