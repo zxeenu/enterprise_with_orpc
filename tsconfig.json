@@ -8,6 +8,15 @@
     },
     {
       "path": "./apps/api"
+    },
+    {
+      "path": "./libs/contracts"
+    },
+    {
+      "path": "./apps/hub-e2e"
+    },
+    {
+      "path": "./apps/hub"
     }
   ]
 }
