@@ -14,11 +14,17 @@ export function App() {
     })
   );
 
+  const getAllQuery = useQuery(
+    orpc.planet.list.queryOptions({
+      input: {},
+    })
+  );
+
   const test = async () => {
-    // const data = await client.planet.find({
-    //   id: 1,
-    // });
-    // console.log(data);
+    const data = await client.planet.find({
+      id: 1,
+    });
+    console.log(data);
   };
 
   useEffect(() => {
@@ -30,6 +36,10 @@ export function App() {
       <pre>
         {getOneQuery.status === 'success' &&
           JSON.stringify(getOneQuery.data, null, 2)}
+      </pre>
+      <pre>
+        {getAllQuery.status === 'success' &&
+          JSON.stringify(getAllQuery.data, null, 2)}
       </pre>
       <NxWelcome title="@enterprise/hub" />
       {/* START: routes */}
