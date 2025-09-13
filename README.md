@@ -115,7 +115,7 @@ Need to be extra careful because in NX monorepos, only 1 package.json exists
 
 ## Notes
 
-TS-Rest + Tan Stack React Query does not work properly on react 19 right now. So we had to downgrade to 18.
+TS-Rest + Tan Stack React Query does not work properly on react 19 right now. So we had to downgrade to 18. ORPC lets use use the latest versions of zod and react.
 
 https://nx.dev/technologies/node/nest/api
 https://nx.dev/technologies/react/introduction
